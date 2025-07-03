@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафедра «Информационные системы и технологии» (ИСТ) | ДонНАСА</title>
+    <style>
+        :root {
+            --primary-color: #002D5B;
+            --secondary-color: #FF6B35;
+            --light-color: #FFFFFF;
+            --dark-color: #333333;
+            --gray-color: #F5F5F5;
+        }
+        
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-img {
+            height: 80px;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            max-width: 300px;
+            line-height: 1.3;
+        }
+        
+        .motto {
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Герой */
+        .hero {
+            background: linear-gradient(rgba(0,45,91,0.8), rgba(0,45,91,0.8)), 
+                        url('lab-background.jpg');
+            background-size: cover;
+            color: var(--light-color);
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e05a2b;
+        }
+        
+        /* Секции */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2em;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        /* Основной контент */
+        .main-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin: 30px 0;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-content::before {
+            content: "DOCENDO DISCIMUS";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: rgba(0,45,91,0.05);
+            font-weight: bold;
+            font-style: italic;
+            z-index: 0;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* О кафедре */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Особенности */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            background: var(--gray-color);
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Программы */
+        .program-tabs {
+            margin-bottom: 40px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Дисциплины */
+        .disciplines {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .discipline-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .discipline-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .discipline-list li {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            background: var(--gray-color);
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        /* Стоимость */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background-color: var(--gray-color);
+        }
+        
+        /* Контакты */
+        .contacts-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .map-container {
+            flex: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: var(--light-color);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contacts-container {
+                flex-direction: column;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="logo.jpg" alt="ДОННАСА" width="90" height="90" class="logo.jpg">
+                    <div>
+                        <div class="logo-text">Кафедра "Информационные системы и технологии"</div>
+                    </div>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#about">О кафедре</a></li>
+                        <li><a href="#programs">Программы</a></li>
+                        <li><a href="#disciplines">Дисциплины</a></li>
+                        <li><a href="#price">Стоимость</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Главный баннер -->
+<style>
+    /* Добавьте эти стили в ваш существующий CSS */
+    .hero h1 {
+        color: #FFFFFF; /* Белый цвет для заголовка */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень для лучшей читаемости */
+    }
+    
+    .hero p {
+        color: #F5F5F5; /* Светло-серый для подзаголовка */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+</style>
+    <section class="hero">
+        <div class="container">
+            <h1>Подготовка IT-специалистов</h1>
+            <p>Современное образование, практико-ориентированный подход, востребованные профессии</p>
+            <div>
+                <a href="#admission" class="cta-button">Поступить</a>
+                <a href="#programs" class="cta-button">Программа обучения</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- О кафедре -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">О кафедре</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Кафедра "Информационные системы и технологии в строительстве" готовит специалистов в области цифровизации строительной отрасли. Мы объединяем фундаментальные знания в области строительства с современными IT-технологиями.</p>
+                    <p>Профиль подготовки ИСТ – это профессиональная деятельность, связанная с исследованием, разработкой, внедрением и сопровождением информационных систем и технологий в строительной отрасли.</p>
+                    <p>Под руководством опытных преподавателей кафедры студенты получают знания, навыки и умения для создания и поддержки автоматизированных систем в строительстве. Полученные знания обеспечивают востребованность на рынке труда и карьерный рост.</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Трудоустройство</h3>
+                    <p>наши выпускники успешно работают в ведущих строительных компаниях, IT-секторе и государственных организациях, 
+       занимая позиции от специалистов до руководителей проектов.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Лаборатории</h3>
+                    <p> современные лаборатории с профессиональным оборудованием</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Партнеры</h3>
+                    <p> компании-партнеры для стажировок и трудоустройства</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Программа обучения -->
+    <section id="programs" class="light-bg">
+        <div class="container">
+            <h2 class="section-title">Программы обучения</h2>
+            
+            <div class="program-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openProgram('bachelor')">Бакалавриат</button>
+                </div>
+                
+                <div id="bachelor" class="tab-content active">
+                    <h3>Направление 09.03.02 "Информационные системы и технологии"</h3>
+                    <p><strong>Профиль:</strong> "Информационные системы и технологии в строительстве"</p>
+                    <p><strong>Срок обучения:</strong> 4 года (очная форма), 5 лет (заочная форма)</p>
+                    <p><strong>Вступительные испытания:</strong> математика, русский язык, информатика/физика</p>
+                    
+                    <h4>Объекты профессиональной деятельности выпускника:</h4>
+                    <ul>
+                        <li>Информационные процессы, технологии, системы и сети</li>
+                        <li>Способы и методы проектирования информационных технологий в строительстве</li>
+                    </ul>
+                    
+                    <h4>Виды профессиональной деятельности:</h4>
+                    <ul>
+                        <li>Производственно-технологическая</li>
+                        <li>Научно-исследовательская</li>
+                        <li>Проектная</li>
+                    </ul>
+                    
+                    <a href="09.03.02_ИСТ.pdf" class="cta-button">Подробнее о программе</a>
+                </div>      
+        </div>
+    </section>
+    
+    <!-- Дисциплины -->
+    <section id="disciplines">
+        <div class="container">
+            <h2 class="section-title">Дисциплины</h2>
+            
+            <div class="disciplines">
+                <div class="discipline-column">
+                    <h3>1-2 курс</h3>
+                    <ul class="discipline-list">
+                        <li>История России</li>
+                        <li>Иностранный язык</li>
+                        <li>Физическая культура и спорт</li>
+                        <li>Инженерная графика</li>
+                        <li>Компьютерная графика</li>
+                        <li>Физика</li>
+                        <li>Математический анализ</li>
+                        <li>Информатика и вычислительная техника</li>
+                        <li>Алгоритмизация и программирование</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-column">
+                    <h3>3 курс</h3>
+                    <ul class="discipline-list">
+                        <li>Основы архитектуры и строительных конструкций</li>
+                        <li>Базы данных</li>
+                        <li>Информационное моделирование объектов строительства</li>
+                        <li>Автоматизация организации строительного производства</li>
+                        <li>Операционные системы</li>
+                        <li>Основы теории управления и логистики</li>
+                    </ul>
+                </div>
+                
+                <div class="discipline-column">
+                    <h3>4 курс</h3>
+                    <ul class="discipline-list">
+                        <li>Системное администрирование</li>
+                        <li>Сети и телекоммуникации</li>
+                        <li>Системотехника строительства</li>
+                        <li>Web-технологии в информационных системах</li>
+                        <li>Геоинформационные системы</li>
+                        <li>Управление и автоматизированные системы управления строительством</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="Перечень дисциплин_1-4 курс.doc" class="cta-button">Скачать полный перечень дисциплин</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Стоимость обучения -->
+    <section id="price" class="light-bg">
+        <div class="container">
+            <h2 class="section-title">Стоимость обучения</h2>
+            
+            <h3>Бакалавриат (2025/2026 учебный год)</h3>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Форма обучения</th>
+                        <th>Срок обучения</th>
+                        <th>Стоимость за год</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Очная</td>
+                        <td>4 года</td>
+                        <td>106 400 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Заочная</td>
+                        <td>5 лет</td>
+                        <td>53 200 руб.</td>
+                    </tr>
+                </tbody>
+            </table>
+                        
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://donnasa.ru/docs/dokumenty/normativnye_akty_po_finansovym_voprosam/stoimost_obucheniya_2025-2026_uch.god.pdf" 
+class="cta-button"> открыть прайс-лист </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Приемная комиссия -->
+    <section id="admission">
+        <div class="container">
+            <h2 class="section-title">Приемная комиссия</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>В 2025 году Донбасская национальная академия строительства и архитектуры становится обособленным подразделением (филиалом) НИУ "Московский государственный строительный университет" — ведущего вуза России в инженерно-строительной отрасли.</p>
+                    <p>Это открывает новые перспективы для научно-исследовательской деятельности, обмена опытом, стажировки и трудоустройства выпускников.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>График работы:</h3>
+                            <p>Пн-Пт: 09:00-15:00<br>Сб: 09:00-14:00<br>Вс: выходной</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Адрес:</h3>
+                            <p>Российская Федерация, Донецкая Народная Республика, 286123,<br>г. Макеевка, ул. Державина, д. 2, ауд.135,136 (1-й корпус)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email:</h3>
+                            <p>vstup@donnasa.ru</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://donnasa.ru/?page_id=111446&lang=ru" class="cta-button">Официальный сайт приемной комиссии</a>
+                </div>
+                            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section id="contacts" class="light-bg">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            
+            <div class="contacts-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Адрес кафедры:</h3>
+                            <p> Российская Федерация, Донецкая Народная Республика,
+286123, г.о. Макеевка, г. Макеевка, ул. Державина, д. 2, ФГБОУ ВО «Донбасская национальная академии строительства и архитектуры»,</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Телефон:</h3>
+                            <p>+7 (949) 370-63-25  — и. о. заведующего кафедрой</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email:</h3>
+                            <p>ist@donnasa.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3>Сайт академии:</h3>
+                            <p><a href="http://donnasa.ru/" target="_blank">donnasa.ru</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <<div class="map-container">
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j&amp;mode=search&amp;text=%D0%B3.%20%D0%9C%D0%B0%D0%BA%D0%B5%D0%B5%D0%B2%D0%BA%D0%B0%2C%20%D1%83%D0%BB.%20%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%B8%D0%BD%D0%B0%2C%202&amp;z=17" width="100%" height="400" frameborder="0"></iframe>
+</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Кафедра ИСТ</h3>
+                    <p>Кафедра "Информационные системы и технологии в строительстве" </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Программы</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#programs" style="color: white; text-decoration: none;">Бакалавриат</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>г. Макеевка, ул. Державина, 2</p>
+                    <p>Тел: +7 (949) 370-63-25</p>
+                    <p>Email: ist@donnasa.ru</p>
+                </div>
+                
+                <div class="footer-section">
+    <h3>Социальные сети</h3>
+    <div class="social-links">
+        <a href="https://vk.com/donnacea" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+        <a href="https://t.me/donnasa_misi" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    </div>
+</div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Кафедра "Информационные системы и технологии в строительстве" ДонНАСА. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Скрипт для переключения вкладок
+        function openProgram(programId) {
+            // Скрыть все вкладки
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Убрать активный класс у всех кнопок
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Показать выбранную вкладку и сделать кнопку активной
+            document.getElementById(programId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
